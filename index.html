@@ -41,7 +41,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(14px, 4vw, 40px) clamp(12px, 3.5vw, 32px) 32px;
+    padding: 18px 12px 110px;
     overflow-x: hidden;
   }
 
@@ -56,11 +56,10 @@
   }
 
   .panels {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: clamp(14px, 3.5vw, 22px);
-    width: 100%;
-    align-items: stretch;
+    gap: 18px;
   }
 
   @media (min-width: 820px) {
@@ -72,27 +71,27 @@
 
   .panel {
     position: relative;
+    width: 100%;
     flex: 1 1 0;
     min-width: 0;
+    aspect-ratio: 1080 / 1920;
     border-radius: 18px;
     overflow: hidden;
-    background: rgba(255,255,255,.04);
+    background-color: rgba(255,255,255,.04);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
     box-shadow:
       0 18px 50px rgba(0,0,0,.45),
       0 0 0 1px rgba(255,255,255,.04);
-    animation: rise .7s cubic-bezier(.2,.8,.2,1) both;
   }
 
-  .panel:nth-child(2) {
-    animation-delay: .12s;
+  .panel-left {
+    background-image: url("https://devtexnet.github.io/texnet-panfleto/panel_left.jpg?v=100");
   }
 
-  .panel img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border: 0;
+  .panel-right {
+    background-image: url("https://devtexnet.github.io/texnet-panfleto/panel_right.jpg?v=100");
   }
 
   .cta {
@@ -117,18 +116,6 @@
     }
   }
 
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
   .float-wa {
     position: fixed;
     z-index: 9;
@@ -136,6 +123,7 @@
     bottom: max(16px, env(safe-area-inset-bottom));
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 9px;
     background: #25D366;
     color: #04210f;
@@ -167,11 +155,12 @@
 
   footer {
     z-index: 1;
-    color: rgba(255,255,255,.55);
+    color: rgba(255,255,255,.65);
     font-size: 12px;
     font-weight: 500;
     text-align: center;
     margin-top: 22px;
+    line-height: 1.35;
   }
 </style>
 </head>
@@ -179,19 +168,9 @@
 <body>
 <main class="wrap">
   <div class="panels">
-    <div class="panel">
-      <img
-        src="https://devtexnet.github.io/texnet-panfleto/panel_left.jpg?v=30"
-        alt="TEXNET - Planos a partir de R$ 79,90 por mes"
-      >
-    </div>
+    <div class="panel panel-left" role="img" aria-label="TEXNET - Planos a partir de R$ 79,90 por mes"></div>
 
-    <div class="panel">
-      <img
-        src="https://devtexnet.github.io/texnet-panfleto/panel_right.jpg?v=30"
-        alt="Complete seu combo - HBO Max, Premiere, Telecine, Universal+, Watch, ESPN"
-      >
-
+    <div class="panel panel-right" role="img" aria-label="Complete seu combo - HBO Max, Premiere, Telecine, Universal+, Watch, ESPN">
       <a
         class="cta"
         href="https://wa.me/558521809191?text=Quero%20aproveitar%20as%20ofertas%20exclusivas%20do%20Mandara%20by%20Yoo%20e%20saber%20mais%20sobre%20as%20condi%C3%A7%C3%B5es%20dispon%C3%ADveis."
