@@ -11,12 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --azul: #001b6b;
-    --azul2: #000a33;
-    --ciano-glow: rgba(22,182,255,.55);
-  }
-
   * {
     margin: 0;
     padding: 0;
@@ -31,67 +25,48 @@
   }
 
   body {
-    font-family: 'Outfit', system-ui, sans-serif;
+    font-family: 'Outfit', Arial, sans-serif;
     min-height: 100vh;
-    min-height: 100dvh;
-    background:
-      radial-gradient(circle at 20% 0%, #0a3aa8 0%, transparent 55%),
-      radial-gradient(circle at 85% 100%, #0a3aa8 0%, transparent 55%),
-      linear-gradient(160deg, var(--azul) 0%, var(--azul2) 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 18px 12px 110px;
+    background: #001b6b;
+    padding: 14px 12px 110px;
     overflow-x: hidden;
   }
 
   .wrap {
-    position: relative;
-    z-index: 1;
     width: 100%;
     max-width: 980px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0 auto;
   }
 
   .panels {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 18px;
+    width: 100%;
   }
 
   @media (min-width: 820px) {
     .panels {
-      flex-direction: row;
-      align-items: flex-start;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
     }
   }
 
-  .panel {
+  .card {
     position: relative;
     width: 100%;
-    flex: 1 1 0;
-    min-width: 0;
-    aspect-ratio: 1080 / 1920;
     border-radius: 18px;
     overflow: hidden;
-    background-color: rgba(255,255,255,.04);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-    box-shadow:
-      0 18px 50px rgba(0,0,0,.45),
-      0 0 0 1px rgba(255,255,255,.04);
+    background: #001b6b;
+    box-shadow: 0 18px 50px rgba(0,0,0,.45);
   }
 
-  .panel-left {
-    background-image: url("https://devtexnet.github.io/texnet-panfleto/panel_left.jpg?v=100");
-  }
-
-  .panel-right {
-    background-image: url("https://devtexnet.github.io/texnet-panfleto/panel_right.jpg?v=100");
+  .card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border: 0;
   }
 
   .cta {
@@ -100,25 +75,14 @@
     top: 82.32%;
     width: 77.74%;
     height: 7.88%;
-    border-radius: 14px;
     display: block;
-    z-index: 3;
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 var(--ciano-glow);
-    }
-
-    50% {
-      box-shadow: 0 0 0 10px rgba(22,182,255,0);
-    }
+    border-radius: 14px;
+    z-index: 2;
   }
 
   .float-wa {
     position: fixed;
-    z-index: 9;
+    z-index: 20;
     right: max(16px, env(safe-area-inset-right));
     bottom: max(16px, env(safe-area-inset-bottom));
     display: inline-flex;
@@ -154,7 +118,6 @@
   }
 
   footer {
-    z-index: 1;
     color: rgba(255,255,255,.65);
     font-size: 12px;
     font-weight: 500;
@@ -167,10 +130,24 @@
 
 <body>
 <main class="wrap">
-  <div class="panels">
-    <div class="panel panel-left" role="img" aria-label="TEXNET - Planos a partir de R$ 79,90 por mes"></div>
+  <section class="panels">
+    <div class="card">
+      <img
+        src="https://devtexnet.github.io/texnet-panfleto/panel_left.jpg?v=200"
+        width="1080"
+        height="1920"
+        alt="TEXNET - Planos a partir de R$ 79,90 por mes"
+      >
+    </div>
 
-    <div class="panel panel-right" role="img" aria-label="Complete seu combo - HBO Max, Premiere, Telecine, Universal+, Watch, ESPN">
+    <div class="card">
+      <img
+        src="https://devtexnet.github.io/texnet-panfleto/panel_right.jpg?v=200"
+        width="1080"
+        height="1920"
+        alt="Complete seu combo - HBO Max, Premiere, Telecine, Universal+, Watch, ESPN"
+      >
+
       <a
         class="cta"
         href="https://wa.me/558521809191?text=Quero%20aproveitar%20as%20ofertas%20exclusivas%20do%20Mandara%20by%20Yoo%20e%20saber%20mais%20sobre%20as%20condi%C3%A7%C3%B5es%20dispon%C3%ADveis."
@@ -179,7 +156,7 @@
         aria-label="Falar no WhatsApp"
       ></a>
     </div>
-  </div>
+  </section>
 
   <footer>
     *Consulte regras e condicoes especiais &bull; Oferta valida para moradores do Mandara by Yoo
